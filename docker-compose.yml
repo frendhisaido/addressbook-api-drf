@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: addressbook-api
+    command: python3 manage.py runserver 0.0.0.0:8888
+    volumes:
+      - ./addressbook:/code
+    ports:
+      - "8888:8888"
