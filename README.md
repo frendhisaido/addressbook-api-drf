@@ -1,16 +1,21 @@
 # addressbook-api-drf
 
 Directions how to run:
-1. docker-compose up -d
 
-This will create/run the docker container (addressbook-api) 
+1. Create/run the docker container (addressbook-api) 
 and then run the DRF server at http://localhost:8888
+```
+docker-compose up -d
+```
 
-2. make all 
+2. Run django migrate and run tests
+```
+make all
+```
 
-This will run django migrate and run tests
+3. Run tests
+```
+make test
+```
 
-3. make test
-
-This will only run tests
 
