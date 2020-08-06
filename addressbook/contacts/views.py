@@ -44,16 +44,18 @@ class ContactListViewSet(viewsets.ModelViewSet):
     
     # Add contact to ContactList URL: ~/contact-lists/2/contacts/
     @action(methods=['POST','DELETE'], detail=True, url_path='contacts')
-    def manage_contact(self, request):
+    def manage_contact(self, request, *args, **kwargs):
         contact_list = self.get_object() # get current contact-list model object 
         contact_pk = request.data['contact_pk'] 
         contact = Contact.objects.get(pk=contact_pk)
+        response_status = status.HTTP_201_CREATED
         if request.method == 'POST':
             contact_list.contacts.add(contact)
         else: # method == DELETE
-            contact_list.contacts.remove(contact) 
+            contact_list.contacts.remove(contact)
+            response_status = status.HTTP_200_OK
         serializer = ContactListSerializer(instance=contact_list) # serialize for response
-        return Response(data=serializer.data, status=status.HTTP_201_CREATED)    
+        return Response(data=serializer.data, status=response_status)    
 
     def get_queryset(self, *args, **kwargs):
         return ContactList.objects.filter(user=self.request.user)
