@@ -35,6 +35,29 @@ class ContactTests(APITestCase):
         self.assertEqual(Contact.objects.count(), 1)
         self.assertEqual(Contact.objects.get().name, 'Bcontact')
 
+    def test_create_delete_contact(self):
+        """
+        Ensure we can delete a newly created contact object.
+        """
+        url = reverse('contact-list')
+        data = {
+            'name' : 'Bcontact',
+            'address' : 'A contact',
+            'phone' : 'A contact',
+            'email' : 'A contact'
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Contact.objects.count(), 1)
+        self.assertEqual(Contact.objects.get().name, 'Bcontact')
+        contact_pk = Contact.objects.get().pk
+        
+        url_delete = reverse('contact-detail',args=[str(contact_pk)])
+        print(url_delete)
+        response = self.client.delete(url_delete, format='json')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Contact.objects.count(), 0)
+
     def test_create_contact_list(self):
         """
         Ensure we can create a new contact list object.
