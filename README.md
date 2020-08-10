@@ -39,3 +39,8 @@ docker-compose up -d
 Token 5cb401b5ea8316a20c24be01a1d438f981c1eaeb
 ```
 
+
+#### Test API using Insomnia
+
+1. You can also test this API using [**insomnia**](https://insomnia.rest/)
+2. The data file to be imported is here [**Insomnia_AddressBook-API.yaml**](https://github.com/frendhisaido/addressbook-api-drf/blob/master/Insomnia_Addressbook-API.yaml)
