@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_yasg',
     'djoser',  # Third party auth app
     'account',
     'contacts'
@@ -53,6 +54,18 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ]
+}
+
+# Swagger Settings From drf-yasg : https://drf-yasg.readthedocs.io/en/stable/security.html
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH' : False,
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
 }
 
 MIDDLEWARE = [
