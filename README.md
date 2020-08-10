@@ -25,7 +25,7 @@ make test
 ```
 docker-compose up -d
 ```
-2. Swagger UI are available at http://localhost:8888/swagger/
+2. Swagger UI will be available at http://localhost:8888/swagger/
 3. You can register a user using `account_users_create` API
 4. Then login to get auth_token using `account_token_login_create` API, if the credential is valid you will get the auth_token for authorization 
 ``` 
@@ -38,7 +38,7 @@ docker-compose up -d
 ```
 Token 5cb401b5ea8316a20c24be01a1d438f981c1eaeb
 ```
-
+6. After the Authorization is set you can start using other APIs that require authentication.
 
 #### Test API using Insomnia
 
