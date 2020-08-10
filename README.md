@@ -1,5 +1,7 @@
 # addressbook-api-drf
 
+API For simple AddressBook Application built with Python Django + Django Rest Framework + SQLite3.
+
 #### Directions how to run:
 
 1. Create/run the docker container (addressbook-api) 
